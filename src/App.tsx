@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Board from "./Board";
+import Routes from "./Routes";
 import "./App.css";
 
 class App extends Component {
@@ -7,7 +7,7 @@ class App extends Component {
     const test: string = "test";
     return (
       <div className="App">
-        <Board id={"5bd4bed2dfe6d3b637be8662"} />
+        <Routes />
       </div>
     );
   }

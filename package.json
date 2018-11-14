@@ -5,17 +5,20 @@
   "dependencies": {
     "@types/graphql": "^14.0.3",
     "@types/jest": "23.3.9",
-    "@types/node": "^10.12.2",
-    "@types/react": "^16.4.18",
+    "@types/node": "10.12.2",
+    "@types/react": "16.4.9",
     "@types/react-dom": "16.0.9",
+    "@types/react-router-dom": "^4.3.1",
     "apollo-cache-inmemory": "^1.3.9",
     "apollo-client": "^2.4.5",
     "apollo-link-http": "^1.5.5",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
+    "history": "^4.7.2",
     "react": "^16.6.0",
     "react-apollo": "^2.2.4",
     "react-dom": "^16.6.0",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "typescript": "3.1.6"
   },
@@ -33,8 +36,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "@types/whatwg-streams": "0.0.7"
-  }
+  ]
 }

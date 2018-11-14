@@ -21,34 +21,56 @@ type Square = {
   y: number;
 };
 
-type InputProps = {
+type GetGameSquaresInputProps = {
+  match: {
+    params: {
+      id: string;
+    };
+  };
+};
+
+type GetGameSquaresVariables = {
   id: string;
 };
 
-type Variables = {
-  id: string;
-};
-
-type Response = {
+type GetGameSquaresResponse = {
   getGameSquares: [Square];
 };
 
-type ChildProps = ChildDataProps<InputProps, Response, Variables>;
+type ChildProps = ChildDataProps<
+  GetGameSquaresInputProps,
+  GetGameSquaresResponse,
+  GetGameSquaresVariables
+>;
 
-const boardWithGame = graphql<InputProps, Response, Variables, ChildProps>(
-  GAME_SQUARE_QUERY,
-  {
-    options: () => ({
-      variables: { id: "5bd4bed2dfe6d3b637be8662" }
-    })
+const boardWithGame = graphql<
+  GetGameSquaresInputProps,
+  GetGameSquaresResponse,
+  GetGameSquaresVariables,
+  ChildProps
+>(GAME_SQUARE_QUERY, {
+  options: ({
+    match: {
+      params: { id }
+    }
+  }) => {
+    return {
+      variables: { id }
+    };
   }
-);
+});
 
-export default boardWithGame(
-  ({ data: { loading = true, getGameSquares = null, error = null } }) => {
+class Board extends React.Component<ChildProps> {
+  componentDidMount() {
+    console.log(this.props);
+  }
+  render() {
+    const { loading, getGameSquares, error } = this.props.data;
     if (loading) return <h1>Loading</h1>;
     if (error) return <h1>Error</h1>;
     console.log(getGameSquares);
     return <h1>We got data</h1>;
   }
-);
+}
+
+export default boardWithGame(Board);
